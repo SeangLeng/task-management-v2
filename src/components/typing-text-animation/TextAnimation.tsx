@@ -7,7 +7,7 @@ export default function TextAnimationComponent() {
   return (
     <TypeAnimation
       sequence={[
-        'on Takser.', 2000,
+        'on TasksDot.', 2000,
         'to make easier.', 2000,
       ]}
       wrapper="span"

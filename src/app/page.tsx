@@ -20,7 +20,7 @@ export default function Home() {
               <TextAnimationComponent />
             </span>
           </h1>
-          <p className="text-description-text text-center">Empower your productivity journey by initiating tasks within our dedicated workspace on Tasker. Start each endeavor with purpose, harnessing the efficiency of automation tailored to your unique needs.</p>
+          <p className="text-description-text text-center md:text-medium sm:text-small">Empower your productivity journey by initiating tasks within our dedicated workspace on Tasker. Start each endeavor with purpose, harnessing the efficiency of automation tailored to your unique needs.</p>
         </div>
         <div className="flex justify-center items-center gap-5 py-10">
           <Button className="rounded-full text-2xl p-7 font-semibold text-white bg-gradient-to-tr from-purple-600 to-primary-color">+ Join us</Button>

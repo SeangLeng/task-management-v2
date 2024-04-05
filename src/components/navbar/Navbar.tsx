@@ -16,7 +16,7 @@ export default function RootNavbar() {
           className="sm:hidden" icon={<FaBars />}
         />
         <NavbarBrand>
-          <Link href="/" className="font-bold text-inherit">TAS<span className="text-primary-color">KER.</span></Link>
+          <Link href="/" className="font-bold text-inherit uppercase">TASK<span className="text-primary-color">dot.</span></Link>
         </NavbarBrand>
       </NavbarContent>
 
