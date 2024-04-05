@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { NextUIProviderContainer } from "./NextUIProvider";
+import RootNavbar from "@/components/navbar/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +18,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="bg-background-primary min-h-svh">
+        <NextUIProviderContainer>
+          <RootNavbar />
+          <div className="container mx-auto py-20 url">
+            {children}  
+          </div>
+        </NextUIProviderContainer>
+      </body>
     </html>
   );
 }
