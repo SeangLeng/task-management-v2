@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import TextAnimationComponent from "@/components/typing-text-animation/TextAnimation";
 import { CardsItem } from "@/constrain/CardsItem";
 import ImageSlides from "@/components/image-slides/ImageSlides";
-import AvatarGroups from "@/components/avatars/AvatarGroup";
+import AvatarGroups from "@/components/Avatars/AvatarGroup";
 
 export default function Home() {
   return (
