@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { NextUIProviderContainer } from "./NextUIProvider";
 import RootNavbar from "@/components/navbar/Navbar";
+import Footer from "@/components/footer/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +23,9 @@ export default function RootLayout({
         <NextUIProviderContainer>
           <RootNavbar />
           <div className="container mx-auto py-20 url">
-            {children}  
+            {children}
           </div>
+          <Footer />
         </NextUIProviderContainer>
       </body>
     </html>

@@ -61,3 +61,7 @@
 nav header {
   max-width: none !important;
 }
+
+.awssld__content {
+  background-color: transparent !important;
+}

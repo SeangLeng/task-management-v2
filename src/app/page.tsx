@@ -1,11 +1,11 @@
 import { Button } from "@nextui-org/react";
-
-import AvatarGroups from "@/components/Avatars/AvatarGroup";
-import TextAnimationComponent from "@/components/typing-text-animation/TextAnimation";
-import { PiStudentFill } from "react-icons/pi";
-import { CardsItem } from "@/constrain/CardsItem";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
+
+import AvatarGroups from "@/components/avatars/AvatarGroup";
+import TextAnimationComponent from "@/components/typing-text-animation/TextAnimation";
+import { CardsItem } from "@/constrain/CardsItem";
+import ImageSlides from "@/components/image-slides/ImageSlides";
 
 export default function Home() {
   return (
@@ -20,11 +20,11 @@ export default function Home() {
               <TextAnimationComponent />
             </span>
           </h1>
-          <p className="text-description-text text-center md:text-medium sm:text-small">Empower your productivity journey by initiating tasks within our dedicated workspace on Tasker. Start each endeavor with purpose, harnessing the efficiency of automation tailored to your unique needs.</p>
+          <p className="text-description-text text-center md:text-lg sm:text-sm">Empower your productivity journey by initiating tasks within our dedicated workspace on Tasker. Start each endeavor with purpose, harnessing the efficiency of automation tailored to your unique needs.</p>
         </div>
         <div className="flex justify-center items-center gap-5 py-10">
-          <Button className="rounded-full text-2xl p-7 font-semibold text-white bg-gradient-to-tr from-purple-600 to-primary-color">+ Join us</Button>
-          <Button className="rounded-full text-2xl p-7 font-semibold text-primary-color bg-white">Features</Button>
+          <Button className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-white bg-gradient-to-tr from-purple-600 to-primary-color">+ Join us</Button>
+          <Button className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-primary-color bg-white">Features</Button>
         </div>
       </section>
       <section className="mt-28">
@@ -47,6 +47,18 @@ export default function Home() {
               </div>
             ))
           }
+        </div>
+      </section>
+      <section id="client-say" className="my-20">
+        <h2 className="text-text-color text-center font-semibold">What our client say!.</h2>
+        <ImageSlides />
+      </section>
+      <section className="lg:p-10 md:p-5 p-2 flex justify-center items-center rounded-2xl bg-gradient-to-br from-primary-color to-purple-200 ">
+        <div id="box-gradient" className="p-10 gap-10 flex flex-col justify-center items-center">
+          <p className="w-2/3 lg:text-4xl md:text-2xl text-xl font-semibold text-center text-gray-100">Ready for transform your task on your project ?</p>
+          <Button size="lg" className="bg-white text-text-color font-semibold">
+            Get Start <FaArrowRight />
+          </Button>
         </div>
       </section>
     </main>

@@ -10,7 +10,7 @@ const AvatarGroups = ({ maxValue }: any) => {
       max={maxValue}
       total={10}
       renderCount={(count) => (
-        <p className="text-small text-foreground font-medium ms-2">+{count} others People are joining us</p>
+        <p className="text-small text-foreground font-medium ms-2">+{count} others people are joining us</p>
       )}
     >
       <Avatar src="https://i.pravatar.cc/150?u=a042581f4e29026024d" />
