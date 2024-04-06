@@ -1,11 +1,10 @@
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
-
-import AvatarGroups from "@/components/avatars/AvatarGroup";
 import TextAnimationComponent from "@/components/typing-text-animation/TextAnimation";
 import { CardsItem } from "@/constrain/CardsItem";
 import ImageSlides from "@/components/image-slides/ImageSlides";
+import AvatarGroups from "@/components/avatars/AvatarGroup";
 
 export default function Home() {
   return (
