@@ -1,12 +1,19 @@
 'use client';
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button } from "@nextui-org/react";
 import { FaBars } from "react-icons/fa";
 import { manuList } from "@/constrain/NavbarItem";
+import { usePathname } from "next/navigation";
 
 export default function RootNavbar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [pathNameCheck, setpathnameCheck] = useState<string>('/');
+  const pathname = usePathname();
+
+  useEffect(() => {
+    setpathnameCheck(pathname);
+  }, [pathname]);
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -24,7 +31,7 @@ export default function RootNavbar() {
         {
           manuList.map((item) => (
             <NavbarItem key={item.id}>
-              <Link className="uppercase font-semibold" color="foreground" href={item.route}>
+              <Link className={`uppercase font-semibold ${pathNameCheck === item.route && 'text-primary-color font-bold'}`} color="foreground" href={item.route}>
                 {item.label}
               </Link>
             </NavbarItem>

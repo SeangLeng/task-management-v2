@@ -2,12 +2,12 @@ export const manuList = [
   {
     id: 1,
     label: "home",
-    route: "#",
+    route: "/",
   },
   {
     id: 2,
     label: "about",
-    route: "#",
+    route: "/pages/about-us",
   },
   {
     id: 1,

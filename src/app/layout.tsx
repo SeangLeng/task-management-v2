@@ -4,6 +4,8 @@ import "./globals.css";
 import { NextUIProviderContainer } from "./NextUIProvider";
 import RootNavbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +25,9 @@ export default function RootLayout({
         <NextUIProviderContainer>
           <RootNavbar />
           <div className="container mx-auto py-20 url">
-            {children}
+            <Suspense fallback={<Loading />}>
+              {children}
+            </Suspense>
           </div>
           <Footer />
         </NextUIProviderContainer>

@@ -16,8 +16,8 @@ export default function Footer() {
           Stay in touch with
         </h4>
         <div className='flex gap-3 text-primary-color mt-5 hover:text-purple-500'>
-        <Link href={'#'}><FaGithub size={30} /></Link>
-        <Link href={'#'}><FaFacebook size={30} /></Link>
+          <Link href={'#'}><FaGithub size={30} /></Link>
+          <Link href={'#'}><FaFacebook size={30} /></Link>
         </div>
       </div>
     </footer>
