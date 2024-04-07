@@ -54,7 +54,7 @@ export default function Home() {
       </section>
       <section className="lg:p-10 md:p-5 p-2 flex justify-center items-center rounded-2xl bg-gradient-to-br from-primary-color to-purple-200 ">
         <div id="box-gradient" className="p-10 gap-10 flex flex-col justify-center items-center">
-          <p className="w-2/3 lg:text-4xl md:text-2xl text-xl font-semibold text-center text-gray-100">Ready for transform your task on your project ?</p>
+          <p className="lg:w-2/3 md:w-2/3 w-full lg:text-4xl md:text-2xl text-xl font-semibold text-center text-gray-100">Ready for transform your task on your project ?</p>
           <Button size="lg" className="bg-white text-text-color font-semibold">
             Get Start <FaArrowRight />
           </Button>

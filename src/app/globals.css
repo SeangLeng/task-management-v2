@@ -65,3 +65,7 @@ nav header {
 .awssld__content {
   background-color: transparent !important;
 }
+
+.swiper-pagination-bullet-active {
+  background: var(--primary-background-color) !important;
+}

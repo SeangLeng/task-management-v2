@@ -22,7 +22,7 @@ export default function ImageSlides() {
         delay: 7000,
         disableOnInteraction: false,
       }}
-      pagination={{ clickable: true }}
+      pagination={{ clickable: true,  }}
     >
       {
         ImageSlidesData.map(item => (
