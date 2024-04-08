@@ -51,8 +51,8 @@ export default function RootNavbar() {
       <NavbarMenu>
         {
           manuList.map((item) => (
-            <NavbarMenuItem key={item.id} className="mt-5">
-              <Link className="uppercase font-semibold" color="foreground" href={item.route}>
+            <NavbarMenuItem key={item.id} className={`mt-5`}>
+              <Link className={`uppercase font-semibold ${pathNameCheck === item.route && 'text-primary-color font-bold'}`} color="foreground" href={item.route}>
                 {item.label}
               </Link>
             </NavbarMenuItem>

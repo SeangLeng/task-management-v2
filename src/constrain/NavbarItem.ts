@@ -12,7 +12,7 @@ export const manuList = [
   {
     id: 1,
     label: "features",
-    route: "#",
+    route: "/pages/features",
   },
   {
     id: 1,

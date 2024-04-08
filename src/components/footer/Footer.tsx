@@ -4,7 +4,7 @@ import { FaFacebook, FaGithub } from 'react-icons/fa'
 
 export default function Footer() {
   return (
-    <footer className='lg:p-10 md:p-5 p-3 bg-gradient-to-t from-purple-200 to-transparent'>
+    <footer className='lg:p-10 md:p-5 p-3 z-40 bg-gradient-to-t from-purple-200 to-transparent'>
       <h2 className='font-semibold text-text-color'>TaskDot.</h2>
       <div className='font-semibold text-lg mt-5 text-text-color flex justify-start items-center gap-5'>
         <Link href={'#'}>Features</Link>
