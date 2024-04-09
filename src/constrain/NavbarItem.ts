@@ -17,6 +17,6 @@ export const manuList = [
   {
     id: 1,
     label: "Contact",
-    route: "#",
+    route: "/pages/contactus",
   },
 ];

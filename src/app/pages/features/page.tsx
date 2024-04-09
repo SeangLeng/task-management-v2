@@ -3,7 +3,7 @@ import { Button, Chip } from "@nextui-org/react";
 
 import backgroundSvg from "~/assets/rectangle-12.svg";
 import feature from '~/assets/Work time-amico.png';
-import taskCreater from '~/assets/Work in progress-amico.png';
+import taskCreater from '~/assets/Accept tasks-amico.png';
 import addTask from '~/assets/Add tasks-amico.png';
 
 export default function Features() {
@@ -56,7 +56,7 @@ export default function Features() {
       </section>
       <section className="mt-20 flex flex-col justify-center items-center gap-5">
         <h2 className="font-bold text-center text-primary-color">Start your task today</h2>
-        <Button variant="bordered" className="text-2xl font-semibold rounded-full w-fit" size="lg" color="secondary">Join us</Button>
+        <Button variant="bordered" className="text-2xl font-semibold rounded-full w-fit mt-5" size="lg" color="secondary">Join us</Button>
       </section>
     </section>
   )
