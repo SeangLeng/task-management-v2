@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, Navba
 import { FaBars } from "react-icons/fa";
 import { manuList } from "@/constrain/NavbarItem";
 import { usePathname } from "next/navigation";
+import { LOGIN, SIGNUP } from "@/constrain/routes";
 
 export default function RootNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -40,10 +41,10 @@ export default function RootNavbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#" className="text-secondary-300 font-semibold">Login</Link>
+          <Link href="/pages/auth/login" className="text-secondary-300 font-semibold">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="secondary" className="font-semibold" href="#" variant="flat">
+          <Button as={Link} color="secondary" className="font-semibold" href={SIGNUP} variant="flat">
             Sign Up
           </Button>
         </NavbarItem>
@@ -59,7 +60,7 @@ export default function RootNavbar() {
           ))
         }
         <NavbarMenuItem className="mt-5">
-          <Link className="uppercase font-semibold" color="foreground" href='/auth/login'>
+          <Link className="uppercase font-semibold" color="foreground" href={LOGIN}>
             Login
           </Link>
         </NavbarMenuItem>
