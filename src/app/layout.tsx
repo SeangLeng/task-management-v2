@@ -24,14 +24,14 @@ export default function RootLayout({
       <body className="bg-background-primary min-h-svh">
         <NextUIProviderContainer>
           <RootNavbar />
-          <div className="container mx-auto py-20 url">
-            <Suspense fallback={<Loading />}>
+          <Suspense fallback={<Loading />}>
+            <div className="container mx-auto py-20 url">
               {children}
-            </Suspense>
-          </div>
+            </div>
+          </Suspense>
           <Footer />
         </NextUIProviderContainer>
       </body>
-    </html>
+    </html >
   );
 }

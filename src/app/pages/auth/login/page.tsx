@@ -1,7 +1,9 @@
 'use client';
 
 import { SIGNUP } from '@/constrain/routes';
+import { useAxiosClient } from '@/services/Axios.service';
 import { Button, Input } from '@nextui-org/react'
+import { message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react'
@@ -10,6 +12,31 @@ import { FaEyeSlash } from 'react-icons/fa';
 import login from '~/assets/Work time-amico.png';
 
 export default function Login() {
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event?.target.value);
+  }
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event?.target.value);
+  }
+
+  const handleLogin = async () => {
+    setLoading(true);
+    if (email && password) {
+      const login =
+        await useAxiosClient.post('/api/auth/login', { email, password })
+          .then((response) => {
+            message.info(response.data.message);
+          })
+          .catch((error) => message.error(error.message));
+    }
+    setLoading(false);
+  }
+
   const [showPassword, setShow] = useState<boolean>(false);
   const handleShowPassword = () => {
     setShow((e: boolean) => !e);
@@ -24,6 +51,8 @@ export default function Login() {
 
           <div className='grid gap-4 mt-10'>
             <Input
+              value={email}
+              onChange={handleEmail}
               size='lg'
               placeholder='email' variant='flat'
               classNames={{
@@ -32,6 +61,8 @@ export default function Login() {
               }}
             />
             <Input
+              value={password}
+              onChange={handlePassword}
               size='lg'
               type={showPassword ? 'text' : 'password'}
               endContent={<button onClick={handleShowPassword} className='bg-transparent border-0 p-0 text-primary-color'>{showPassword ? <FaEyeSlash /> : <BsEyeFill />}</button>}
@@ -41,7 +72,7 @@ export default function Login() {
                 inputWrapper: 'bg-white border-primary-color border-b border-b-3 rounded-full'
               }}
             />
-            <Button className='rounded-full font-semibold' variant='solid' color='secondary'>Sign in</Button>
+            <Button isLoading={loading} onClick={handleLogin} className='rounded-full font-semibold' variant='solid' color='secondary'>Sign in</Button>
             <Link href={SIGNUP}>Already has an account yet? <span className='text-primary'>Create new account</span></Link>
           </div>
         </div>
