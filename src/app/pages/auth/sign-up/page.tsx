@@ -18,8 +18,8 @@ export default function SignUp() {
   }
   return (
     <section className='relative'>
-      <Image src={svg} alt='svg' className='absolute z-0 w-1/3 -bottom-10 -right-20' />
-      <Image src={svg} alt='svg' className='absolute z-0 w-1/3 -top-10 -left-20' />
+      <Image src={svg} alt='svg' className='absolute z-0 w-1/3 -bottom-10 lg:-right-20 md:-right-10 right-0' />
+      <Image src={svg} alt='svg' className='absolute z-0 w-1/3 -top-10 lg:-left-20 md:-left-10 left-0' />
 
       <div className='grid lg:grid-cols-2 md:grid-cols-2 z-10 grid-cols-1 justify-center items-center gap-10 border rounded-2xl backdrop-blur-lg bg-white/25 shadow-sm'>
         <Image src={login} alt='login-image' />
