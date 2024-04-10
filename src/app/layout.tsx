@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-background-primary min-h-svh">
+      <body className="bg-background-primary min-h-svh overflow-x-hidden">
         <NextUIProviderContainer>
           <RootNavbar />
           <div className="container mx-auto py-20 url">
