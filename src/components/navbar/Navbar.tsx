@@ -12,17 +12,23 @@ export default function RootNavbar() {
   const [pathNameCheck, setpathnameCheck] = useState<string>('/');
   const pathname = usePathname();
   const router = useRouter();
-  const user = localStorage.getItem('userInfo');
+  const [user, setUser] = useState<any>();
 
   const handleSignIn = () => {
     if (user) {
-      localStorage.clear();
+      if (typeof window !== 'undefined') {
+        localStorage.clear();
+      }
       router.refresh();
     } else {
       router.push(SIGNUP);
     }
   }
   useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const user = localStorage.getItem('userInfo');
+      setUser(user);
+    }
     setpathnameCheck(pathname);
   }, [pathname]);
 
