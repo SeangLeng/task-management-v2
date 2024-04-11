@@ -32,7 +32,7 @@ export default function Home() {
         <div className="mt-20 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-5">
           {
             CardsItem.map((item, index) => (
-              <div key={item.id} className="bg-white hover:border-1 hover:border-primary-color w-full md:hover:scale-105 h-auto transition-all p-5 rounded-xl shadow-md grid gap-2 justify-between">
+              <div key={index} className="bg-white hover:border-1 hover:border-primary-color w-full md:hover:scale-105 h-auto transition-all p-5 rounded-xl shadow-md grid gap-2 justify-between">
                 <item.icon size={100} className="text-primary-color" />
                 <div className="mt-5">
                   <h3 className="font-semibold text-text-color">

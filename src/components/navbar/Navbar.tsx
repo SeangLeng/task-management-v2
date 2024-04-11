@@ -4,14 +4,24 @@ import React, { useEffect, useState } from "react";
 import { Navbar, NavbarBrand, NavbarContent, NavbarItem, NavbarMenuToggle, NavbarMenu, NavbarMenuItem, Link, Button } from "@nextui-org/react";
 import { FaBars } from "react-icons/fa";
 import { manuList } from "@/constrain/NavbarItem";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { LOGIN, SIGNUP } from "@/constrain/routes";
 
 export default function RootNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pathNameCheck, setpathnameCheck] = useState<string>('/');
   const pathname = usePathname();
+  const router = useRouter();
+  const user = localStorage.getItem('userInfo');
 
+  const handleSignIn = () => {
+    if (user) {
+      localStorage.clear();
+      router.refresh();
+    } else {
+      router.push(SIGNUP);
+    }
+  }
   useEffect(() => {
     setpathnameCheck(pathname);
   }, [pathname]);
@@ -41,11 +51,11 @@ export default function RootNavbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="/pages/auth/login" className="text-secondary-300 font-semibold">Login</Link>
+          <Link href={LOGIN} className={`${user && 'hidden'} text-secondary-300 font-semibold`}>Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="secondary" className="font-semibold" href={SIGNUP} variant="flat">
-            Sign Up
+          <Button as={Link} color="secondary" className="font-semibold" onClick={handleSignIn} variant="flat">
+            {user ? 'sign out' : 'sign in'}
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -60,7 +70,7 @@ export default function RootNavbar() {
           ))
         }
         <NavbarMenuItem className="mt-5">
-          <Link className="uppercase font-semibold" color="foreground" href={LOGIN}>
+          <Link className={`${user && 'hidden'} uppercase font-semibold`} color="foreground" href={LOGIN}>
             Login
           </Link>
         </NavbarMenuItem>

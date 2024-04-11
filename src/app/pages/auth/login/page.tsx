@@ -1,20 +1,27 @@
 'use client';
 
 import { SIGNUP } from '@/constrain/routes';
+import { setUser } from '@/lib/features/userInfo/Userinfo';
 import { useAxiosClient } from '@/services/Axios.service';
 import { Button, Input } from '@nextui-org/react'
 import { message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useState } from 'react'
 import { BsEyeFill } from 'react-icons/bs';
 import { FaEyeSlash } from 'react-icons/fa';
+import { useDispatch, useSelector } from 'react-redux';
 import login from '~/assets/Work time-amico.png';
 
 export default function Login() {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
+  const [user, setUserinfo] = useState<any>();
+  const dispatch = useDispatch();
+  const userInformation = useSelector((state: any) => state.userInfo)
+  const router = useRouter();
 
   const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event?.target.value);
@@ -27,12 +34,15 @@ export default function Login() {
   const handleLogin = async () => {
     setLoading(true);
     if (email && password) {
-      const login =
-        await useAxiosClient.post('/api/auth/login', { email, password })
-          .then((response) => {
-            message.info(response.data.message);
-          })
-          .catch((error) => message.error(error.message));
+      try {
+        const response = await useAxiosClient.post('/api/auth/login', { email, password });
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('userInfo', response.data.user);
+        }
+        router.push('/');
+      } catch (error: any) {
+        message.error(error.message);
+      }
     }
     setLoading(false);
   }
@@ -41,6 +51,7 @@ export default function Login() {
   const handleShowPassword = () => {
     setShow((e: boolean) => !e);
   }
+
   return (
     <section>
       <div className='grid lg:grid-cols-2 md:grid-cols-2 grid-cols-1 justify-center items-center gap-10'>

@@ -6,6 +6,7 @@ import RootNavbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import { Suspense } from "react";
 import Loading from "./loading";
+import StoreProvider from "@/lib/StoreProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,15 +23,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-background-primary min-h-svh">
-        <NextUIProviderContainer>
-          <RootNavbar />
-          <Suspense fallback={<Loading />}>
-            <div className="container mx-auto py-20 url">
-              {children}
-            </div>
-          </Suspense>
-          <Footer />
-        </NextUIProviderContainer>
+        <StoreProvider>
+          <NextUIProviderContainer>
+            <RootNavbar />
+            <Suspense fallback={<Loading />}>
+              <div className="container mx-auto py-20 url">
+                {children}
+              </div>
+            </Suspense>
+            <Footer />
+          </NextUIProviderContainer>
+        </StoreProvider>
       </body>
     </html >
   );
