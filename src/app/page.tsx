@@ -1,3 +1,5 @@
+'use client';
+
 import { Button } from "@nextui-org/react";
 import Link from "next/link";
 import { FaArrowRight } from "react-icons/fa";
@@ -5,8 +7,29 @@ import TextAnimationComponent from "@/components/typing-text-animation/TextAnima
 import { CardsItem } from "@/constrain/CardsItem";
 import ImageSlides from "@/components/image-slides/ImageSlides";
 import AvatarGroups from "@/components/Avatars/AvatarGroup";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
+interface userInformationData {
+  email: string,
+  username: string,
+}
 
 export default function Home() {
+  const [user, setUser] = useState<userInformationData>();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const userInfoString = localStorage.getItem('userInfo');
+      if (userInfoString) {
+        setUser(JSON.parse(userInfoString));
+      } else {
+        console.log('No user information found.');
+      }
+    }
+  }, []);
+
   return (
     <main>
       <section id="header-homepage">
@@ -22,8 +45,9 @@ export default function Home() {
           <p className="text-description-text text-center md:text-lg sm:text-sm">Empower your productivity journey by initiating tasks within our dedicated workspace on Tasker. Start each endeavor with purpose, harnessing the efficiency of automation tailored to your unique needs.</p>
         </div>
         <div className="flex justify-center items-center gap-5 py-10">
-          <Button className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-white bg-gradient-to-tr from-purple-600 to-primary-color">+ Join us</Button>
-          <Button className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-primary-color bg-white">Features</Button>
+          <Button className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-white bg-gradient-to-tr from-purple-600 to-primary-color">{user ? 'start your tasks' :
+            '+ Join us'}</Button>
+          <Button onClick={() => router.push("/pages/features")} className="rounded-full lg:text-2xl md:text-xl text-lg p-7 font-semibold text-primary-color bg-white">Features</Button>
         </div>
       </section>
       <section className="mt-28">

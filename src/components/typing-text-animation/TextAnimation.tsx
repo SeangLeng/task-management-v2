@@ -8,7 +8,7 @@ export default function TextAnimationComponent() {
     <TypeAnimation
       sequence={[
         'on TasksDot.', 2000,
-        'to make easier.', 2000,
+        `to make easier.`, 2000,
       ]}
       wrapper="span"
       speed={20}

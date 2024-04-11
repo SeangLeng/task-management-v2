@@ -18,19 +18,25 @@ export default function RootNavbar() {
     if (user) {
       if (typeof window !== 'undefined') {
         localStorage.clear();
+        window.location.reload();
       }
-      router.refresh();
     } else {
       router.push(SIGNUP);
     }
   }
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const user = localStorage.getItem('userInfo');
-      setUser(user);
+      const userInfoString = localStorage.getItem('userInfo');
+      if (userInfoString) {
+        setUser(JSON.parse(userInfoString));
+      } else {
+        console.log('No user information found in localStorage.');
+      }
     }
     setpathnameCheck(pathname);
   }, [pathname]);
+
+  console.log(user)
 
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
@@ -59,9 +65,10 @@ export default function RootNavbar() {
         <NavbarItem className="hidden lg:flex">
           <Link href={LOGIN} className={`${user && 'hidden'} text-secondary-300 font-semibold`}>Login</Link>
         </NavbarItem>
-        <NavbarItem>
+        <NavbarItem className="flex gap-5 justify-center items-center">
+          <p className="text-primary-color font-semibold uppercase">{user?.email}</p>
           <Button as={Link} color="secondary" className="font-semibold" onClick={handleSignIn} variant="flat">
-            {user ? 'sign out' : 'sign in'}
+            {user ? 'Log out' : 'Sign up'}
           </Button>
         </NavbarItem>
       </NavbarContent>

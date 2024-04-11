@@ -8,49 +8,49 @@ import { message } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { BsEyeFill } from 'react-icons/bs';
 import { FaEyeSlash } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import login from '~/assets/Work time-amico.png';
 
 export default function Login() {
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
-  const [user, setUserinfo] = useState<any>();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const userInformation = useSelector((state: any) => state.userInfo)
   const router = useRouter();
 
-  const handleEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setEmail(event?.target.value);
-  }
+  const handleEmail = useCallback((event: any) => {
+    setEmail(event.target.value);
+  }, []);
 
-  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setPassword(event?.target.value);
-  }
+  const handlePassword = useCallback((event: any) => {
+    setPassword(event.target.value);
+  }, []);
 
-  const handleLogin = async () => {
+  const handleLogin = useCallback(async () => {
     setLoading(true);
     if (email && password) {
       try {
         const response = await useAxiosClient.post('/api/auth/login', { email, password });
-        if (typeof window !== 'undefined') {
-          localStorage.setItem('userInfo', response.data.user);
+        if (response.data.code === 200) {
+          window.localStorage.setItem('userInfo', JSON.stringify(response.data.user)) // Assuming you have a Redux action to set user
+          router.push('/');
+        } else {
+          message.error('Bad credentials');
         }
-        router.push('/');
       } catch (error: any) {
-        message.error(error.message);
+        message.error(error.message || 'An error occurred');
       }
     }
     setLoading(false);
-  }
+  }, [email, password, router]);
 
-  const [showPassword, setShow] = useState<boolean>(false);
-  const handleShowPassword = () => {
-    setShow((e: boolean) => !e);
-  }
+  const [showPassword, setShow] = useState(false);
+  const handleShowPassword = useCallback(() => {
+    setShow((prevShow) => !prevShow);
+  }, []);
 
   return (
     <section>
