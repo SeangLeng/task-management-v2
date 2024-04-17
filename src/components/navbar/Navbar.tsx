@@ -41,12 +41,11 @@ export default function RootNavbar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href={LOGIN} className={`${user && 'hidden'} text-secondary-300 font-semibold`}>Login</Link>
+          <Link href={LOGIN} className={`text-secondary-300 font-semibold`}>Login</Link>
         </NavbarItem>
         <NavbarItem className="flex gap-5 justify-center items-center">
-          <p className="text-primary-color font-semibold uppercase">{user?.email}</p>
-          <Button as={Link} color="secondary" className="font-semibold" onClick={handleSignIn} variant="flat">
-            {user ? 'Log out' : 'Sign up'}
+          <Button as={Link} color="secondary" className="font-semibold" variant="flat">
+            Sign up
           </Button>
         </NavbarItem>
       </NavbarContent>
@@ -61,7 +60,7 @@ export default function RootNavbar() {
           ))
         }
         <NavbarMenuItem className="mt-5">
-          <Link className={`${user && 'hidden'} uppercase font-semibold`} color="foreground" href={LOGIN}>
+          <Link className={`uppercase font-semibold`} color="foreground" href={LOGIN}>
             Login
           </Link>
         </NavbarMenuItem>
