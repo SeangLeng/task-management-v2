@@ -36,8 +36,6 @@ export default function RootNavbar() {
     setpathnameCheck(pathname);
   }, [pathname]);
 
-  console.log(user)
-
   return (
     <Navbar onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent>
