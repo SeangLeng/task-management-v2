@@ -11,6 +11,11 @@ export default function RootNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pathNameCheck, setpathnameCheck] = useState<string>('/');
   const pathname = usePathname();
+  const router = useRouter();
+
+  const handleRouteSignUp = () => {
+    router.push(SIGNUP);
+  }
 
   useEffect(() => {
     setpathnameCheck(pathname);
@@ -44,7 +49,7 @@ export default function RootNavbar() {
           <Link href={LOGIN} className={`text-secondary-300 font-semibold`}>Login</Link>
         </NavbarItem>
         <NavbarItem className="flex gap-5 justify-center items-center">
-          <Button as={Link} color="secondary" className="font-semibold" variant="flat">
+          <Button onClick={handleRouteSignUp} as={Link} color="secondary" className="font-semibold" variant="flat">
             Sign up
           </Button>
         </NavbarItem>
