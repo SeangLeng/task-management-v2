@@ -11,28 +11,8 @@ export default function RootNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [pathNameCheck, setpathnameCheck] = useState<string>('/');
   const pathname = usePathname();
-  const router = useRouter();
-  const [user, setUser] = useState<any>();
 
-  const handleSignIn = () => {
-    if (user) {
-      if (typeof window !== 'undefined') {
-        localStorage.clear();
-        window.location.reload();
-      }
-    } else {
-      router.push(SIGNUP);
-    }
-  }
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const userInfoString = localStorage.getItem('userInfo');
-      if (userInfoString) {
-        setUser(JSON.parse(userInfoString));
-      } else {
-        console.log('No user information found in localStorage.');
-      }
-    }
     setpathnameCheck(pathname);
   }, [pathname]);
 
